@@ -7,6 +7,7 @@
 // - 戦闘結果は短く・自分→敵の順で見える（敵行動は少し遅らせる）
 // - プレイ中もホームに戻れる
 // =====================
+const APP_VERSION = "0.1.0";
 
 const $ = (id) => document.getElementById(id);
 
@@ -3558,3 +3559,11 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+function updateVersionLabel(){
+  const el = document.getElementById("versionLabel");
+  if (el) el.textContent = `ver ${APP_VERSION}`;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  updateVersionLabel();
+});

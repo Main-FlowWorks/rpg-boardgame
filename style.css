@@ -345,3 +345,13 @@ select,input{
   color: #ff4d4f; /* red */
   font-weight: 800;
 }
+/* 右上：バージョン表示 */
+.versionLabel{
+  font-size: 12px;
+  opacity: 0.85;
+  user-select: none;
+  padding: 6px 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  line-height: 1;
+}
