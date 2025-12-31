@@ -1,0 +1,37 @@
+[
+  { "id":"SK_SWORD_1","job":"SWORD","name":"剣気集中","desc":"攻撃ダイスの最低値を3にする（1,2が出ても3扱い）。","mp":{"perAtkDie":1},"ct":4,"type":"attack","element":"physical","effectKey":"attack_min_die","params":{"min":3} },
+  { "id":"SK_SWORD_2","job":"SWORD","name":"処刑撃","desc":"防御無視の固定ダメージ：Lv×10（弱点なら×2）。","mp":6,"ct":10,"type":"attack","element":"physical","effectKey":"attack_fixed_damage","params":{"by":"level","mul":10} },
+  { "id":"SK_SWORD_3","job":"SWORD","name":"魔刃付与","desc":"魔法属性で攻撃（弱点が魔法なら与ダメ×2）。","mp":8,"ct":8,"type":"attack","element":"magic","effectKey":"attack_element_magic","params":{} },
+  { "id":"SK_SWORD_4","job":"SWORD","name":"力押し","desc":"ATK固定値+3して攻撃。","mp":1,"ct":2,"type":"attack","element":"physical","effectKey":"attack_atk_flat","params":{"add":3} },
+  { "id":"SK_SWORD_5","job":"SWORD","name":"背水の極意","desc":"この戦闘中、HPが1の間 与ダメージ×3（発動してから有効）。","mp":5,"ct":15,"type":"buff","effectKey":"buff_triple_while_hp1","params":{} },
+
+  { "id":"SK_MAGE_1","job":"MAGE","name":"倍化魔弾","desc":"与ダメージ×2の魔法攻撃。","mp":4,"ct":3,"type":"attack","element":"magic","effectKey":"attack_atk_mult","params":{"mul":2} },
+  { "id":"SK_MAGE_2","job":"MAGE","name":"強化魔弾","desc":"ATK固定値+4して魔法攻撃。","mp":2,"ct":2,"type":"attack","element":"magic","effectKey":"attack_atk_flat","params":{"add":4} },
+  { "id":"SK_MAGE_3","job":"MAGE","name":"崩し呪い","desc":"敵DEF固定値-6（3ターン）。","mp":3,"ct":5,"type":"debuff","effectKey":"debuff_enemy_def_flat","params":{"delta":-6,"turns":3} },
+  { "id":"SK_MAGE_4","job":"MAGE","name":"血の錬金","desc":"HPを1d6減らし（最低1残る）、MPを同値回復する。","mp":0,"ct":10,"type":"utility","effectKey":"hp_to_mp_xd6","params":{} },
+  { "id":"SK_MAGE_5","job":"MAGE","name":"マナ暴走","desc":"MPを全消費し、消費MPぶん攻撃ダイスを増やして魔法攻撃。","mp":0,"ct":8,"type":"attack","element":"magic","effectKey":"mp_to_atk_xd6","params":{} },
+
+  { "id":"SK_HERO_1","job":"HERO","name":"奮起","desc":"この戦闘中、ATK固定+1d6、DEF固定+1d6。","mp":3,"ct":2,"type":"buff","effectKey":"buff_atk_def_plus_1d6","params":{} },
+  { "id":"SK_HERO_2","job":"HERO","name":"属性付与","desc":"魔法属性で攻撃（弱点が魔法なら与ダメ×2）。","mp":3,"ct":3,"type":"attack","element":"magic","effectKey":"attack_element_magic","params":{} },
+  { "id":"SK_HERO_3","job":"HERO","name":"覇者の勲功","desc":"この戦闘の獲得EXP×2。","mp":15,"ct":15,"type":"buff","effectKey":"buff_battle_exp_mult","params":{"mul":2} },
+  { "id":"SK_HERO_4","job":"HERO","name":"命運の一撃","desc":"この潜りで1回だけ、戦闘に即勝利する。","mp":0,"ct":999,"type":"utility","effectKey":"win_battle_once_per_dive","params":{} },
+  { "id":"SK_HERO_5","job":"HERO","name":"斬撃強化","desc":"攻撃ダイス+1、さらに固定+5して攻撃。","mp":2,"ct":3,"type":"attack","element":"physical","effectKey":"attack_atk_plus_1d6_plus_flat","params":{"flat":5} },
+
+  { "id":"SK_ARCHER_1","job":"ARCHER","name":"魔矢","desc":"魔法属性で攻撃（弱点が魔法なら与ダメ×2）。","mp":4,"ct":2,"type":"attack","element":"magic","effectKey":"attack_element_magic","params":{} },
+  { "id":"SK_ARCHER_2","job":"ARCHER","name":"連射","desc":"2回攻撃する。","mp":3,"ct":5,"type":"attack","element":"physical","effectKey":"attack_twice","params":{} },
+  { "id":"SK_ARCHER_3","job":"ARCHER","name":"毒矢","desc":"攻撃し、毒を付与（3ターン）。毎ターン敵行動前に1d6ダメージ。","mp":3,"ct":3,"type":"attack","element":"physical","effectKey":"attack_apply_poison","params":{"turns":3,"dmgExpr":"1d6"} },
+  { "id":"SK_ARCHER_4","job":"ARCHER","name":"狙撃","desc":"攻撃ダイス+2して攻撃。","mp":2,"ct":4,"type":"attack","element":"physical","effectKey":"attack_atk_plus_dice","params":{"dice":"2d6"} },
+  { "id":"SK_ARCHER_5","job":"ARCHER","name":"報復射ち","desc":"直前に受けたダメージと同値のダメージを与える（直前が0なら1）。","mp":6,"ct":6,"type":"attack","element":"physical","effectKey":"attack_damage_equals_taken","params":{} },
+
+  { "id":"SK_THIEF_1","job":"THIEF","name":"急所攻撃","desc":"最終ダメージ×1.5。","mp":3,"ct":5,"type":"attack","element":"physical","effectKey":"attack_final_mult","params":{"mul":1.5} },
+  { "id":"SK_THIEF_2","job":"THIEF","name":"煙幕回避","desc":"次の敵攻撃を2回分、無効化する。","mp":1,"ct":3,"type":"buff","effectKey":"buff_evade_turns","params":{"turns":2} },
+  { "id":"SK_THIEF_3","job":"THIEF","name":"遁走術","desc":"確実に逃走成功→1マス戻る（マス効果なし）。","mp":0,"ct":5,"type":"utility","effectKey":"auto_escape","params":{} },
+  { "id":"SK_THIEF_4","job":"THIEF","name":"盗掘","desc":"戦闘中に財宝を確保：バッグに即+（基礎G×深度）。","mp":10,"ct":10,"type":"utility","effectKey":"gain_treasure_now","params":{} },
+  { "id":"SK_THIEF_5","job":"THIEF","name":"確定の一撃","desc":"この攻撃の全ダイスが6になる。","mp":6,"ct":8,"type":"attack","element":"physical","effectKey":"attack_all_dice_6","params":{} },
+
+  { "id":"SK_PRIEST_1","job":"PRIEST","name":"浄化","desc":"（現状：解除対象の状態異常が未実装のため、将来拡張枠）","mp":4,"ct":5,"type":"utility","effectKey":"cleanse_self","params":{} },
+  { "id":"SK_PRIEST_2","job":"PRIEST","name":"大治癒","desc":"HPを3d6回復する。","mp":6,"ct":6,"type":"utility","effectKey":"heal_hp_expr","params":{"expr":"3d6"} },
+  { "id":"SK_PRIEST_3","job":"PRIEST","name":"聖撃付与","desc":"魔法属性で攻撃（弱点が魔法なら与ダメ×2）。","mp":2,"ct":3,"type":"attack","element":"magic","effectKey":"attack_element_magic","params":{} },
+  { "id":"SK_PRIEST_4","job":"PRIEST","name":"守りの祈り","desc":"次に受けるダメージを-4する。","mp":4,"ct":4,"type":"buff","effectKey":"buff_next_damage_minus_flat","params":{"flat":4} },
+  { "id":"SK_PRIEST_5","job":"PRIEST","name":"守護強化","desc":"このターンの防御ダイスに+2d6。","mp":4,"ct":4,"type":"buff","effectKey":"buff_def_plus_dice_this_turn","params":{"dice":"2d6"} }
+]

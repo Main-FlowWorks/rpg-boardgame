@@ -1,0 +1,18 @@
+{
+  "events": [
+    { "id": "EVT_LUCKY_CHEST", "name": "幸運の宝箱", "effectKey": "gainTreasure", "params": { "count": 1 } },
+    { "id": "EVT_PICKPOCKET", "name": "盗賊の手", "effectKey": "stealLowestTreasure", "params": { "target": "anyOther" } },
+    { "id": "EVT_PITFALL", "name": "落とし穴", "effectKey": "loseLowestTreasure", "params": {} },
+    { "id": "EVT_ARMORY", "name": "武器庫", "effectKey": "gainEquip", "params": { "count": 1 } },
+    { "id": "EVT_POUCH", "name": "道具袋", "effectKey": "gainItem", "params": { "count": 1 } },
+    { "id": "EVT_GEAR_BREAK", "name": "装備破損", "effectKey": "disableEquippedItem", "params": {} },
+    { "id": "EVT_HEALING_SPRING", "name": "治療の泉", "effectKey": "healAndMp", "params": { "hpExpr": "1d6", "mpFlat": 1 } },
+    { "id": "EVT_CURSE", "name": "呪い", "effectKey": "nextBattleDefFlatMod", "params": { "delta": -3 } },
+    { "id": "EVT_BLESS", "name": "祝福", "effectKey": "nextBattleAtkFlatMod", "params": { "delta": 3 } },
+
+    { "id": "EVT_WARP", "name": "ワープ", "effectKey": "warpByD6", "params": { "oddDelta": 3, "evenDelta": -3 } },
+
+    { "id": "EVT_LOST_AND_FOUND", "name": "落とし物", "effectKey": "lostAndFound", "params": {} },
+    { "id": "EVT_SHRINE_REALLOCATE", "name": "再配分の祠", "effectKey": "transferAtkDefDie", "params": { "minDiceEach": 1 } }
+  ]
+}

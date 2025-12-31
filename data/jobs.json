@@ -1,0 +1,44 @@
+{
+  "SWORD": {
+    "name": "剣士",
+    "base": { "hp": "3d6+6", "mp": "2d6", "atk": "3d6", "def": "2d6+2" },
+    "startSkillCount": 1,
+    "escapeBonus": 0,
+    "defaultElement": "physical"
+  },
+  "MAGE": {
+    "name": "魔法使い",
+    "base": { "hp": "2d6+3", "mp": "3d6+6", "atk": "2d6", "def": "2d6" },
+    "startSkillCount": 3,
+    "escapeBonus": 0,
+    "defaultElement": "physical"
+  },
+  "HERO": {
+    "name": "勇者",
+    "base": { "hp": "3d6+2", "mp": "3d6+2", "atk": "2d6+5", "def": "2d6+3" },
+    "startSkillCount": 2,
+    "escapeBonus": 1,
+    "defaultElement": "physical"
+  },
+  "ARCHER": {
+    "name": "弓使い",
+    "base": { "hp": "2d6+4", "mp": "2d6+3", "atk": "2d6+4", "def": "2d6+2" },
+    "startSkillCount": 2,
+    "escapeBonus": 1,
+    "defaultElement": "physical"
+  },
+  "THIEF": {
+    "name": "盗賊",
+    "base": { "hp": "2d6+4", "mp": "2d6+5", "atk": "3d6", "def": "2d6+1" },
+    "startSkillCount": 3,
+    "escapeBonus": 2,
+    "defaultElement": "physical"
+  },
+  "PRIEST": {
+    "name": "僧侶",
+    "base": { "hp": "3d6", "mp": "3d6+2", "atk": "2d6", "def": "2d6+2" },
+    "startSkillCount": 2,
+    "escapeBonus": 0,
+    "defaultElement": "physical"
+  }
+}

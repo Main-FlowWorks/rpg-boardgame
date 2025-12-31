@@ -1,0 +1,57 @@
+{
+  "gear": [
+    { "id": "EQ_SW_01", "name": "鋼の剣", "slot": "weapon", "desc": "ATKダイス+1", "effects": { "atkDice": 1 } },
+    { "id": "EQ_SW_02", "name": "銀の剣", "slot": "weapon", "desc": "ATK固定+3", "effects": { "atkFlat": 3 } },
+    { "id": "EQ_SW_03", "name": "反撃の盾", "slot": "armor", "desc": "DEFダイス+1", "effects": { "defDice": 1 } },
+    { "id": "EQ_SW_04", "name": "重装鎧", "slot": "armor", "desc": "DEF固定+4", "effects": { "defFlat": 4 } },
+    { "id": "EQ_SW_05", "name": "戦意の勲章", "slot": "accessory", "desc": "スキルMP-1", "effects": { "mpCost": -1 } },
+    { "id": "EQ_SW_06", "name": "連撃の手袋", "slot": "accessory", "desc": "スキルCT-1", "effects": { "ct": -1 } },
+    { "id": "EQ_SW_07", "name": "鍛冶の腕輪", "slot": "accessory", "desc": "ATK固定+2 & CT-1", "effects": { "atkFlat": 2, "ct": -1 } },
+    { "id": "EQ_SW_08", "name": "守勢の指輪", "slot": "accessory", "desc": "DEF固定+2 & MP-1", "effects": { "defFlat": 2, "mpCost": -1 } },
+
+    { "id": "EQ_MG_01", "name": "魔導書", "slot": "weapon", "desc": "スキルMP-2", "effects": { "mpCost": -2 } },
+    { "id": "EQ_MG_02", "name": "ルーン杖", "slot": "weapon", "desc": "ATKダイス+1", "effects": { "atkDice": 1 } },
+    { "id": "EQ_MG_03", "name": "秘術の指輪", "slot": "accessory", "desc": "スキルMP-1 & CT-1", "effects": { "mpCost": -1, "ct": -1 } },
+    { "id": "EQ_MG_04", "name": "早詠みのローブ", "slot": "armor", "desc": "スキルCT-1", "effects": { "ct": -1 } },
+    { "id": "EQ_MG_05", "name": "魔防のマント", "slot": "armor", "desc": "DEF固定+3", "effects": { "defFlat": 3 } },
+    { "id": "EQ_MG_06", "name": "集中のヘッドバンド", "slot": "accessory", "desc": "ATK固定+2", "effects": { "atkFlat": 2 } },
+    { "id": "EQ_MG_07", "name": "護符：結界", "slot": "accessory", "desc": "DEFダイス+1", "effects": { "defDice": 1 } },
+    { "id": "EQ_MG_08", "name": "星読みのペンダント", "slot": "accessory", "desc": "ATK固定+1 & MP-1 & CT-1", "effects": { "atkFlat": 1, "mpCost": -1, "ct": -1 } },
+
+    { "id": "EQ_HR_01", "name": "勇者の剣", "slot": "weapon", "desc": "ATKダイス+1", "effects": { "atkDice": 1 } },
+    { "id": "EQ_HR_02", "name": "勇者の盾", "slot": "armor", "desc": "DEFダイス+1", "effects": { "defDice": 1 } },
+    { "id": "EQ_HR_03", "name": "不屈の鎧", "slot": "armor", "desc": "DEF固定+5", "effects": { "defFlat": 5 } },
+    { "id": "EQ_HR_04", "name": "光の守り", "slot": "armor", "desc": "DEF固定+3 & MP-1", "effects": { "defFlat": 3, "mpCost": -1 } },
+    { "id": "EQ_HR_05", "name": "勇気の旗", "slot": "accessory", "desc": "ATK固定+2 & DEF固定+2", "effects": { "atkFlat": 2, "defFlat": 2 } },
+    { "id": "EQ_HR_06", "name": "伝説の小手", "slot": "accessory", "desc": "ATK固定+4", "effects": { "atkFlat": 4 } },
+    { "id": "EQ_HR_07", "name": "旅人のブーツ", "slot": "accessory", "desc": "スキルCT-1", "effects": { "ct": -1 } },
+    { "id": "EQ_HR_08", "name": "星のペンダント", "slot": "accessory", "desc": "スキルMP-1 & CT-1", "effects": { "mpCost": -1, "ct": -1 } },
+
+    { "id": "EQ_AR_01", "name": "長弓", "slot": "weapon", "desc": "ATKダイス+1", "effects": { "atkDice": 1 } },
+    { "id": "EQ_AR_02", "name": "名射手の弓", "slot": "weapon", "desc": "ATK固定+3", "effects": { "atkFlat": 3 } },
+    { "id": "EQ_AR_03", "name": "皮鎧", "slot": "armor", "desc": "DEFダイス+1", "effects": { "defDice": 1 } },
+    { "id": "EQ_AR_04", "name": "狩人の外套", "slot": "armor", "desc": "DEF固定+3", "effects": { "defFlat": 3 } },
+    { "id": "EQ_AR_05", "name": "連射の指輪", "slot": "accessory", "desc": "スキルCT-1", "effects": { "ct": -1 } },
+    { "id": "EQ_AR_06", "name": "俊敏のブーツ", "slot": "accessory", "desc": "スキルCT-1 & MP-1", "effects": { "ct": -1, "mpCost": -1 } },
+    { "id": "EQ_AR_07", "name": "精密照準器", "slot": "accessory", "desc": "ATK固定+2", "effects": { "atkFlat": 2 } },
+    { "id": "EQ_AR_08", "name": "風切りのマント", "slot": "armor", "desc": "スキルCT-1", "effects": { "ct": -1 } },
+
+    { "id": "EQ_TH_01", "name": "短剣", "slot": "weapon", "desc": "ATKダイス+1", "effects": { "atkDice": 1 } },
+    { "id": "EQ_TH_02", "name": "毒刃", "slot": "weapon", "desc": "ATK固定+2", "effects": { "atkFlat": 2 } },
+    { "id": "EQ_TH_03", "name": "影装束", "slot": "armor", "desc": "DEFダイス+1", "effects": { "defDice": 1 } },
+    { "id": "EQ_TH_04", "name": "静寂のマント", "slot": "armor", "desc": "DEF固定+2 & MP-1", "effects": { "defFlat": 2, "mpCost": -1 } },
+    { "id": "EQ_TH_05", "name": "軽業の靴", "slot": "accessory", "desc": "スキルCT-1", "effects": { "ct": -1 } },
+    { "id": "EQ_TH_06", "name": "盗賊の指輪", "slot": "accessory", "desc": "スキルMP-1", "effects": { "mpCost": -1 } },
+    { "id": "EQ_TH_07", "name": "すり替えの手袋", "slot": "accessory", "desc": "MP-1 & CT-1", "effects": { "mpCost": -1, "ct": -1 } },
+    { "id": "EQ_TH_08", "name": "奇襲の護符", "slot": "accessory", "desc": "ATK固定+3 & CT-1", "effects": { "atkFlat": 3, "ct": -1 } },
+
+    { "id": "EQ_PR_01", "name": "聖杖", "slot": "weapon", "desc": "ATK固定+2", "effects": { "atkFlat": 2 } },
+    { "id": "EQ_PR_02", "name": "祈祷書", "slot": "weapon", "desc": "スキルMP-2", "effects": { "mpCost": -2 } },
+    { "id": "EQ_PR_03", "name": "聖衣", "slot": "armor", "desc": "DEF固定+4", "effects": { "defFlat": 4 } },
+    { "id": "EQ_PR_04", "name": "誓いの盾", "slot": "armor", "desc": "DEFダイス+1", "effects": { "defDice": 1 } },
+    { "id": "EQ_PR_05", "name": "癒しのロザリオ", "slot": "accessory", "desc": "スキルMP-1", "effects": { "mpCost": -1 } },
+    { "id": "EQ_PR_06", "name": "守護の聖印", "slot": "accessory", "desc": "DEF固定+2", "effects": { "defFlat": 2 } },
+    { "id": "EQ_PR_07", "name": "祝福のティアラ", "slot": "accessory", "desc": "スキルCT-1", "effects": { "ct": -1 } },
+    { "id": "EQ_PR_08", "name": "司祭の手袋", "slot": "accessory", "desc": "MP-1 & CT-1", "effects": { "mpCost": -1, "ct": -1 } }
+  ]
+}

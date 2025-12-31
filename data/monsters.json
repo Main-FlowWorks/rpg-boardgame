@@ -1,0 +1,44 @@
+{
+  "byDepth": {
+    "1": [
+      { "id":"D1_SLIME","name":"スライム","hp":9,"mp":2,"atkExpr":"1d6+1","defExpr":"1d6+1","weakness":"physical" },
+      { "id":"D1_GOBLIN","name":"ゴブリン","hp":8,"mp":3,"atkExpr":"2d6","defExpr":"1d6","weakness":"magic" },
+      { "id":"D1_SKELETON","name":"スケルトン","hp":9,"mp":2,"atkExpr":"1d6+2","defExpr":"2d6","weakness":"physical" },
+      { "id":"D1_WOLF","name":"ウルフ","hp":10,"mp":1,"atkExpr":"2d6+1","defExpr":"1d6+1","weakness":"magic" },
+      { "id":"D1_TINY_GOLEM","name":"小型ゴーレム","hp":12,"mp":1,"atkExpr":"1d6","defExpr":"2d6+3","weakness":"magic" },
+      { "id":"D1_DARK_ACOLYTE","name":"闇の侍祭","hp":8,"mp":12,"atkExpr":"1d6+3","defExpr":"1d6+1","weakness":"physical" }
+    ],
+    "2": [
+      { "id":"D2_OGRE","name":"オーガ","hp":18,"mp":4,"atkExpr":"3d6","defExpr":"2d6","weakness":"magic" },
+      { "id":"D2_MIMIC","name":"ミミック","hp":24,"mp":4,"atkExpr":"3d6","defExpr":"3d6","weakness":"magic" },
+      { "id":"D2_SHADOW_ASSASSIN","name":"アサシン影","hp":15,"mp":10,"atkExpr":"4d6","defExpr":"2d6","weakness":"physical" },
+      { "id":"D2_ARMORED_KNIGHT","name":"鎧騎士","hp":22,"mp":2,"atkExpr":"3d6","defExpr":"4d6","weakness":"magic" },
+      { "id":"D2_ABYSS_PRIEST","name":"深淵の司祭","hp":17,"mp":16,"atkExpr":"2d6+3","defExpr":"2d6+3","weakness":"physical" },
+      { "id":"D2_WYVERN_WHELP","name":"ワイバーン幼体","hp":22,"mp":2,"atkExpr":"4d6","defExpr":"2d6","weakness":"magic" }
+    ],
+    "3": [
+      { "id":"D3_DEEP_GOBLIN","name":"深層ゴブリン兵","hp":24,"mp":6,"atkExpr":"3d6+3","defExpr":"3d6+3","weakness":"magic" },
+      { "id":"D3_SHADOW_WOLF","name":"影狼","hp":22,"mp":8,"atkExpr":"4d6","defExpr":"3d6+4","weakness":"physical" },
+      { "id":"D3_CURSE_PRIEST","name":"呪いの司祭","hp":18,"mp":18,"atkExpr":"3d6+2","defExpr":"3d6+2","weakness":"physical" },
+      { "id":"D3_MIMIC_MK2","name":"ミミック改","hp":30,"mp":4,"atkExpr":"4d6+2","defExpr":"3d6+2","weakness":"magic" },
+      { "id":"D3_CAVE_TROLL","name":"洞窟トロル","hp":32,"mp":2,"atkExpr":"4d6+1","defExpr":"3d6+1","weakness":"magic" },
+      { "id":"D3_FROST_WITCH","name":"氷の魔女","hp":18,"mp":20,"atkExpr":"3d6+1","defExpr":"3d6+3","weakness":"physical" }
+    ],
+    "4": [
+      { "id":"D4_ARMORED_KNIGHT","name":"鎧騎士","hp":34,"mp":6,"atkExpr":"4d6+3","defExpr":"4d6+4","weakness":"magic" },
+      { "id":"D4_ABYSS_MAGE","name":"深淵の魔導士","hp":26,"mp":22,"atkExpr":"4d6+2","defExpr":"4d6+2","weakness":"physical" },
+      { "id":"D4_LAVA_GOLEM","name":"溶岩ゴーレム","hp":40,"mp":4,"atkExpr":"4d6+4","defExpr":"5d6","weakness":"magic" },
+      { "id":"D4_SPECTER","name":"亡霊","hp":24,"mp":24,"atkExpr":"4d6+3","defExpr":"4d6+3","weakness":"physical" },
+      { "id":"D4_BASILISK","name":"バジリスク","hp":35,"mp":9,"atkExpr":"5d6+1","defExpr":"5d6","weakness":"magic" },
+      { "id":"D4_FALLEN_PALADIN","name":"堕ちた聖騎士","hp":38,"mp":8,"atkExpr":"4d6+4","defExpr":"5d6+1","weakness":"physical" }
+    ],
+    "5": [
+      { "id":"D5_DEATH_GENERAL","name":"死鎧将","hp":44,"mp":6,"atkExpr":"5d6+4","defExpr":"5d6+4","weakness":"magic" },
+      { "id":"D5_DEEP_WYVERN","name":"深層ワイバーン","hp":46,"mp":4,"atkExpr":"6d6","defExpr":"5d6+2","weakness":"magic" },
+      { "id":"D5_HIGH_PRIEST","name":"深淵の司祭長","hp":36,"mp":24,"atkExpr":"5d6+3","defExpr":"5d6+1","weakness":"physical" },
+      { "id":"D5_MIMIC_VAULT","name":"ミミック『宝物庫』","hp":50,"mp":6,"atkExpr":"5d6+2","defExpr":"6d6","weakness":"magic" },
+      { "id":"D5_VOID_SORCERER","name":"虚無の大魔導士","hp":34,"mp":24,"atkExpr":"6d6","defExpr":"5d6+2","weakness":"physical" },
+      { "id":"D5_ASSASSIN_MASTER","name":"暗殺者の頭領","hp":38,"mp":12,"atkExpr":"7d6","defExpr":"5d6","weakness":"physical" }
+    ]
+  }
+}

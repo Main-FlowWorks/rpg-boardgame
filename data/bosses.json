@@ -1,0 +1,9 @@
+{
+  "bosses": [
+    { "id":"B1_GATEKEEPER_OGRE","depth":1,"name":"門番オーガ","hp":22,"mp":6,"atkExpr":"3d6+2","defExpr":"2d6+2","weakness":"magic","turnLimit":15 },
+    { "id":"B2_CURSED_KNIGHT","depth":2,"name":"呪鎧の騎士","hp":30,"mp":6,"atkExpr":"4d6+1","defExpr":"4d6+1","weakness":"physical","turnLimit":15 },
+    { "id":"B3_DEEP_WYVERN","depth":3,"name":"深層ワイバーン","hp":38,"mp":8,"atkExpr":"5d6+2","defExpr":"4d6+2","weakness":"magic","turnLimit":15 },
+    { "id":"B4_LAVA_GOLEM_KING","depth":4,"name":"溶岩ゴーレム王","hp":50,"mp":6,"atkExpr":"5d6+3","defExpr":"6d6","weakness":"magic","turnLimit":15 },
+    { "id":"B5_ABYSS_PRIEST_KING","depth":5,"name":"深淵の司祭王","hp":44,"mp":24,"atkExpr":"6d6+2","defExpr":"5d6+4","weakness":"physical","turnLimit":15 }
+  ]
+}

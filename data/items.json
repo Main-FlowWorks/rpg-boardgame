@@ -1,0 +1,25 @@
+{
+  "items": [
+    { "id": "IT_HEAL_S", "name": "小回復薬", "desc": "HPを1d6回復", "effectKey": "heal_hp_expr", "params": { "expr": "1d6" } },
+    { "id": "IT_HEAL_M", "name": "回復薬", "desc": "HPを2d6回復", "effectKey": "heal_hp_expr", "params": { "expr": "2d6" } },
+    { "id": "IT_HEAL_L", "name": "大回復薬", "desc": "HPを3d6回復", "effectKey": "heal_hp_expr", "params": { "expr": "3d6" } },
+
+    { "id": "IT_MP_S", "name": "小魔力薬", "desc": "MPを1d6回復", "effectKey": "heal_mp_expr", "params": { "expr": "1d6" } },
+    { "id": "IT_MP_M", "name": "魔力薬", "desc": "MPを2d6回復", "effectKey": "heal_mp_expr", "params": { "expr": "2d6" } },
+
+    { "id": "IT_SMOKE", "name": "煙玉", "desc": "次の敵攻撃を1回だけ回避", "effectKey": "buff_evade_turns", "params": { "turns": 1 } },
+    { "id": "IT_CHARM", "name": "鉄の護符", "desc": "次に受けるダメージを-4（最低0）", "effectKey": "buff_next_damage_minus_flat", "params": { "flat": 4 } },
+
+    { "id": "IT_HASTE", "name": "迅速の符", "desc": "選んだスキルのCTを-2（最低0）", "effectKey": "reduce_skill_ct", "params": { "delta": 2 } },
+    { "id": "IT_ROPE", "name": "逃走ロープ", "desc": "次の逃走判定に+2（使用後に1回だけ）", "effectKey": "escape_bonus_next", "params": { "add": 2 } },
+
+    { "id": "IT_ENCHANT", "name": "魔力付与札", "desc": "次の通常攻撃を魔法属性にする", "effectKey": "next_attack_element", "params": { "element": "magic" } },
+    { "id": "IT_POWER", "name": "力の薬", "desc": "次の攻撃のATKに固定+4", "effectKey": "next_attack_atk_flat", "params": { "add": 4 } },
+
+    { "id": "IT_FIREBOMB", "name": "火炎瓶", "desc": "敵に魔法ダメージ15（弱点なら×2）", "effectKey": "deal_fixed_damage", "params": { "damage": 15, "element": "magic" } },
+    { "id": "IT_POISON", "name": "毒針", "desc": "敵に毒（3ターン）を付与", "effectKey": "apply_poison", "params": { "turns": 3 } },
+
+    { "id": "IT_WEAK", "name": "弱体粉", "desc": "敵DEFを2ターン-4", "effectKey": "debuff_enemy_def_flat", "params": { "delta": -4, "turns": 2 } },
+    { "id": "IT_CLEANSE", "name": "祈りの札", "desc": "デバフ解除（簡易）", "effectKey": "cleanse_self", "params": {} }
+  ]
+}

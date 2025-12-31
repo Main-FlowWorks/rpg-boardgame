@@ -1,0 +1,347 @@
+:root{
+  --bg:#0f1115;
+  --panel:#171a21;
+  --panel2:#1f2430;
+  --text:#e7eaf0;
+  --muted:#a9b0c0;
+  --good:#5fe07b;
+  --bad:#ff6b6b;
+  --line:#2a3040;
+  --tile:#222838;
+  --tile2:#2a3144;
+
+  /* マスを大きくする（ここを変えるとサイズ調整できる） */
+  --tileSize: 74px;
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.hidden{ display:none; }
+
+.title{ margin:0 0 12px 0; font-size:22px; }
+.panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+}
+.panelTitle{
+  font-weight:700;
+  margin-bottom:8px;
+  color:var(--muted);
+}
+.hr{
+  height:1px; background:var(--line);
+  margin:10px 0;
+}
+
+.row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:8px 0;
+}
+label{ width:120px; color:var(--muted); }
+select,input{
+  background:var(--panel2);
+  border:1px solid var(--line);
+  color:var(--text);
+  border-radius:10px;
+  padding:8px 10px;
+  outline:none;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  gap:12px;
+  padding:12px;
+}
+.rightCol{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.status{
+  padding:10px 12px;
+  border-bottom:1px solid var(--line);
+  background:rgba(0,0,0,.2);
+  position:sticky;
+  top:0;
+  z-index:1;
+}
+
+/* ボードがはみ出てもスクロールできるように */
+#boardWrap{
+  overflow:auto;
+}
+
+/* ===== Board (11x11 perimeter) ===== */
+#board{
+  display:grid;
+  grid-template-columns: repeat(7, var(--tileSize));
+  grid-auto-rows: var(--tileSize);
+  gap:4px;
+  justify-content:center;
+  align-content:start;
+  padding:6px 0 2px 0;
+}
+
+.tile{
+  background:var(--tile);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:8px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow:hidden;
+}
+.tile.empty{
+  background: transparent;
+  border: none;
+}
+.tile.active{
+  outline:2px solid #7aa2ff;
+}
+
+.tile .top{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--muted);
+  gap:6px;
+}
+.type{
+  padding:2px 8px;
+  border-radius:999px;
+  font-size:11px;
+  background:var(--tile2);
+  border:1px solid var(--line);
+  white-space:nowrap;
+}
+.type.MONSTER{ color:#ffb86b; }
+.type.BOSS{ color:#ff6b6b; }
+.type.EVENT{ color:#7aa2ff; }
+.type.SAFE{ color:#5fe07b; }
+.type.START{ color:#e7eaf0; }
+
+.tokens{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  margin-top:6px;
+}
+.token{
+  font-size:11px;
+  padding:2px 8px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--panel2);
+}
+
+/* ===== Buttons ===== */
+.btnRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
+.btn{
+  background:var(--panel2);
+  border:1px solid var(--line);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.15s;
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn:disabled{
+  opacity:.45;
+  cursor:not-allowed;
+  transform:none;
+}
+.btn.primary{
+  border-color:#7aa2ff;
+}
+
+.small{ font-size:12px; color:var(--muted); }
+.note{ margin-top:10px; }
+.good{ color:var(--good); }
+.bad{ color:var(--bad); }
+
+.kv{
+  display:grid;
+  grid-template-columns: 120px 1fr;
+  gap:8px;
+  font-size:13px;
+  margin:6px 0;
+}
+.infoBox{
+  background:rgba(0,0,0,.18);
+  border:1px dashed var(--line);
+  border-radius:12px;
+  padding:10px;
+  font-size:13px;
+  white-space:pre-wrap;
+  min-height:52px;
+}
+
+.log{
+  margin:0;
+  height:260px;
+  overflow:auto;
+  background:rgba(0,0,0,.18);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:10px;
+  white-space:pre-wrap;
+}
+
+/* ===== 自作ツールチップ（即表示） ===== */
+.tooltip{
+  position:fixed;
+  left:0; top:0;
+  transform: translate(12px, 12px);
+  max-width: 360px;
+  background: rgba(0,0,0,.92);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 12px;
+  color: var(--text);
+  white-space: pre-wrap;
+  pointer-events:none;
+  z-index: 9999;
+  box-shadow: 0 10px 22px rgba(0,0,0,.45);
+}
+/* ===== 3カラム：左ボード / 中央 戦闘 / 右 プレイヤー ===== */
+.layout.layout3{
+  grid-template-columns: max-content 1fr 420px;
+  align-items: start;
+}
+
+.centerCol{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:center; /* 中央カラム内でパネルを中央寄せ */
+}
+
+/* 中央に置くパネルの幅（好きに調整OK） */
+.centerCol > .panel{
+  width: min(560px, 100%);
+}
+
+/* ボードを左寄せに（いま center になってるのを外す） */
+#board{
+  justify-content: start;
+}
+
+#boardWrap{
+  justify-self: start;
+}
+/* 左カラム（ボード+ログ）を縦スクロール可能に */
+#boardWrap{
+  max-height: calc(100vh - 90px); /* 上のステータス行ぶん余裕 */
+  overflow: auto;
+}
+
+/* ログの高さを少し小さめに（好みで調整） */
+#boardWrap .log{
+  height: 220px;
+}
+/* ===== 上部：ゲーム外操作バー ===== */
+.status{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px;
+  border-bottom:1px solid var(--line);
+  background:rgba(0,0,0,.2);
+  position:sticky;
+  top:0;
+  z-index:2;
+}
+
+.topBtns{
+  display:flex;
+  gap:8px;
+}
+
+.topBtn{
+  padding:8px 10px;
+  border-radius:10px;
+}
+
+/* ===== オプション：モーダル ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9998;
+}
+
+.modalContent{
+  width:min(560px, 92vw);
+}
+
+.modalContent .row{
+  align-items:center;
+}
+
+.modalContent input[type="range"]{
+  flex:1;
+}
+.modal.hidden { display: none; }
+.btnWrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:6px;
+}
+.btn.dim{
+  opacity:0.55;
+}
+.btnWrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:6px;
+}
+.btn.dim{
+  opacity:0.55;
+}
+.dndGear { cursor: grab; user-select: none; }
+.dndGear:active { cursor: grabbing; }
+
+.dndSlot, .dndBag {
+  border: 1px dashed rgba(255,255,255,0.25);
+  border-radius: 10px;
+  padding: 6px 8px;
+  margin: 6px 0;
+}
+
+.dndHover {
+  outline: 2px solid rgba(255,255,255,0.35);
+}
+.warn {
+  color: #f2c94c; /* yellow */
+  font-weight: 700;
+}
+.danger {
+  color: #ff4d4f; /* red */
+  font-weight: 800;
+}
