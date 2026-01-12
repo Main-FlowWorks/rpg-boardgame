@@ -10,7 +10,21 @@
   <div id="setup" class="panel">
     <h1 class="title">Dice RPG Boardgame</h1>
 
-<div class="row">
+    <div class="row">
+      <label>モード</label>
+      <div class="modeBtns">
+        <button id="btnModeNormal" class="btn primary" type="button">通常モード</button>
+        <button id="btnModeSolo" class="btn" type="button">ソロモード</button>
+      </div>
+    </div>
+
+    <div id="soloNote" class="small note hidden">
+      ※ソロ：職業だけ選択。死亡するとGAME OVER。確定Gがスコア（ターン平均も表示）
+    </div>
+    
+<div id="normalOnly">
+  <!-- ここに「プレイヤー人数」「ラウンド数」「宣言タイム」3つのrowを入れる -->
+   <div class="row">
   <label>プレイヤー人数</label>
   <select id="playersCount">
     <option value="1" selected>1</option>
@@ -32,6 +46,10 @@
         <option value="true">あり（オンライン向け）</option>
       </select>
     </div>
+  <div class="hr"></div>
+</div>
+
+
 
     <div class="hr"></div>
 
@@ -40,9 +58,10 @@
     <div class="hr"></div>
     <button id="btnStart" class="btn primary">ゲーム開始</button>
 
-    <div class="small note">
-      ※職業は重複なし（同名キャラはOK）
-    </div>
+   <div id="normalNote" class="small note">
+  ※職業は重複なし（同名キャラはOK）
+</div>
+
   </div>
 
   <div id="game" class="hidden">
@@ -85,26 +104,50 @@
   </div>
 </div>
 
-    
-<!-- オプション（モーダル） -->
+    <!-- オプション（モーダル） -->
 <div id="optionsModal" class="modal hidden">
   <div class="modalContent panel">
     <div class="panelTitle">オプション</div>
 
     <div class="row">
       <label>戦闘表示速度</label>
-      <input id="optSpeed" type="range" min="0" max="1200" step="50" />
-      <span id="optSpeedVal" class="small"></span>
+      <div class="rangeRow">
+        <input id="optSpeed" type="range" min="0" max="1500" step="50" />
+        <span id="optSpeedVal" class="small note">650ms</span>
+      </div>
     </div>
 
     <div class="row">
-      <label>マスサイズ</label>
-      <input id="optTile" type="range" min="52" max="96" step="2" />
-      <span id="optTileVal" class="small"></span>
+      <label>マスの大きさ</label>
+      <div class="rangeRow">
+        <input id="optTile" type="range" min="54" max="120" step="2" />
+        <span id="optTileVal" class="small note">74px</span>
+      </div>
     </div>
 
-    <div class="btnRow" style="justify-content:flex-end;">
+    <div class="hr"></div>
+
+    <div class="btnRow">
       <button id="btnOptClose" class="btn primary">閉じる</button>
+    </div>
+
+    <div class="small note">
+      ※モーダル外をクリックしても閉じます。
+    </div>
+  </div>
+</div>
+
+
+<!-- ゲームオーバー（モーダル） -->
+<div id="gameOverModal" class="modal hidden">
+  <div class="modalContent panel">
+    <div class="panelTitle">GAME OVER</div>
+
+    <div id="gameOverSummary" class="infoBox"></div>
+
+    <div class="btnRow" style="justify-content:flex-end;">
+      <button id="btnRetry" class="btn">リトライ</button>
+      <button id="btnGoHome" class="btn primary">ホームへ</button>
     </div>
   </div>
 </div>

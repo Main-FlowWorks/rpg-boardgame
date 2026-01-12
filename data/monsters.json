@@ -39,6 +39,47 @@
       { "id":"D5_MIMIC_VAULT","name":"ミミック『宝物庫』","hp":50,"mp":6,"atkExpr":"5d6+2","defExpr":"6d6","weakness":"magic" },
       { "id":"D5_VOID_SORCERER","name":"虚無の大魔導士","hp":34,"mp":24,"atkExpr":"6d6","defExpr":"5d6+2","weakness":"physical" },
       { "id":"D5_ASSASSIN_MASTER","name":"暗殺者の頭領","hp":38,"mp":12,"atkExpr":"7d6","defExpr":"5d6","weakness":"physical" }
-    ]
+    ],
+"6": [
+  { "id":"D6_ABYSS_ARMORED_KNIGHT","name":"深淵鎧騎士","hp":52,"mp":8,"atkExpr":"6d6+4","defExpr":"6d6+4","weakness":"magic" },
+  { "id":"D6_NECRO_LICH","name":"屍術のリッチ","hp":40,"mp":32,"atkExpr":"6d6+2","defExpr":"6d6+2","weakness":"physical" },
+  { "id":"D6_CHAOS_BEAST","name":"混沌獣","hp":58,"mp":6,"atkExpr":"7d6","defExpr":"6d6+2","weakness":"magic" },
+  { "id":"D6_SPECTER_LORD","name":"亡霊王","hp":42,"mp":36,"atkExpr":"6d6+3","defExpr":"6d6+3","weakness":"physical" },
+  { "id":"D6_BASILISK_ALPHA","name":"覇王バジリスク","hp":54,"mp":12,"atkExpr":"7d6+1","defExpr":"7d6","weakness":"magic" },
+  { "id":"D6_ASSASSIN_SHADE","name":"影の暗殺者","hp":44,"mp":18,"atkExpr":"8d6","defExpr":"6d6+1","weakness":"physical" }
+],
+"7": [
+  { "id":"D7_ANCIENT_GOLEM","name":"古代ゴーレム","hp":66,"mp":8,"atkExpr":"7d6+2","defExpr":"8d6","weakness":"magic" },
+  { "id":"D7_ABYSS_TEMPLAR","name":"深淵の聖堂騎士","hp":60,"mp":10,"atkExpr":"7d6+5","defExpr":"7d6+4","weakness":"magic" },
+  { "id":"D7_HELL_WYVERN","name":"獄炎ワイバーン","hp":62,"mp":8,"atkExpr":"8d6+1","defExpr":"7d6+2","weakness":"magic" },
+  { "id":"D7_CURSE_ORACLE","name":"呪詛の預言者","hp":46,"mp":40,"atkExpr":"7d6+1","defExpr":"7d6+1","weakness":"physical" },
+  { "id":"D7_VOID_MIMIC","name":"ミミック『虚空』","hp":68,"mp":8,"atkExpr":"7d6+4","defExpr":"8d6","weakness":"magic" },
+  { "id":"D7_SHADOW_PACK_ALPHA","name":"影狼群長","hp":56,"mp":14,"atkExpr":"8d6+2","defExpr":"7d6+3","weakness":"physical" }
+],
+"8": [
+  { "id":"D8_DEATH_COMMANDER","name":"死鎧指揮官","hp":78,"mp":10,"atkExpr":"8d6+5","defExpr":"8d6+4","weakness":"magic" },
+  { "id":"D8_ABYSS_ARCHMAGE","name":"深淵の大魔導師","hp":54,"mp":48,"atkExpr":"9d6","defExpr":"8d6+2","weakness":"physical" },
+  { "id":"D8_LAVA_TITAN","name":"溶岩タイタン","hp":88,"mp":8,"atkExpr":"9d6+2","defExpr":"9d6","weakness":"magic" },
+  { "id":"D8_REVENANT","name":"復讐の亡者","hp":70,"mp":20,"atkExpr":"9d6+1","defExpr":"8d6+3","weakness":"physical" },
+  { "id":"D8_DRAGONKIN_WARRIOR","name":"竜血の戦士","hp":74,"mp":16,"atkExpr":"9d6+3","defExpr":"8d6+2","weakness":"magic" },
+  { "id":"D8_ASSASSIN_GRANDMASTER","name":"暗殺者の大頭領","hp":62,"mp":24,"atkExpr":"10d6","defExpr":"8d6","weakness":"physical" }
+],
+"9": [
+  { "id":"D9_LICH_KING","name":"リッチキング","hp":62,"mp":60,"atkExpr":"10d6+2","defExpr":"9d6+1","weakness":"physical" },
+  { "id":"D9_ASTRAL_WYRM","name":"星界竜","hp":92,"mp":16,"atkExpr":"10d6+4","defExpr":"9d6+3","weakness":"magic" },
+  { "id":"D9_IRON_COLOSSUS","name":"鉄巨人","hp":110,"mp":10,"atkExpr":"10d6+2","defExpr":"11d6","weakness":"magic" },
+  { "id":"D9_VOID_PRIESTESS","name":"虚無の巫女","hp":58,"mp":68,"atkExpr":"10d6+1","defExpr":"9d6+2","weakness":"physical" },
+  { "id":"D9_MIMIC_CITADEL","name":"ミミック『城塞』","hp":120,"mp":10,"atkExpr":"10d6+3","defExpr":"11d6","weakness":"magic" },
+  { "id":"D9_SHADOW_DUELIST","name":"影の剣聖","hp":76,"mp":30,"atkExpr":"11d6","defExpr":"9d6+3","weakness":"physical" }
+],
+"10": [
+  { "id":"D10_ABYSS_DRAGON","name":"深淵竜","hp":140,"mp":20,"atkExpr":"12d6+4","defExpr":"12d6","weakness":"magic" },
+  { "id":"D10_VOID_DEMI_LICH","name":"虚無のデミリッチ","hp":80,"mp":90,"atkExpr":"12d6+2","defExpr":"11d6+2","weakness":"physical" },
+  { "id":"D10_OBSIDIAN_PALADIN","name":"黒曜の聖騎士","hp":120,"mp":20,"atkExpr":"12d6+3","defExpr":"13d6","weakness":"physical" },
+  { "id":"D10_PRIMORDIAL_GOLEM","name":"原初ゴーレム","hp":160,"mp":12,"atkExpr":"11d6+4","defExpr":"14d6","weakness":"magic" },
+  { "id":"D10_VOID_EMPEROR","name":"虚無皇","hp":100,"mp":100,"atkExpr":"13d6","defExpr":"12d6","weakness":"physical" },
+  { "id":"D10_ASSASSIN_REAPER","name":"死神の暗殺者","hp":96,"mp":40,"atkExpr":"14d6","defExpr":"11d6+1","weakness":"physical" }
+]
+
   }
 }

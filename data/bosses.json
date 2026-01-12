@@ -4,6 +4,12 @@
     { "id":"B2_CURSED_KNIGHT","depth":2,"name":"呪鎧の騎士","hp":30,"mp":6,"atkExpr":"4d6+1","defExpr":"4d6+1","weakness":"physical","turnLimit":15 },
     { "id":"B3_DEEP_WYVERN","depth":3,"name":"深層ワイバーン","hp":38,"mp":8,"atkExpr":"5d6+2","defExpr":"4d6+2","weakness":"magic","turnLimit":15 },
     { "id":"B4_LAVA_GOLEM_KING","depth":4,"name":"溶岩ゴーレム王","hp":50,"mp":6,"atkExpr":"5d6+3","defExpr":"6d6","weakness":"magic","turnLimit":15 },
-    { "id":"B5_ABYSS_PRIEST_KING","depth":5,"name":"深淵の司祭王","hp":44,"mp":24,"atkExpr":"6d6+2","defExpr":"5d6+4","weakness":"physical","turnLimit":15 }
+    { "id":"B5_ABYSS_PRIEST_KING","depth":5,"name":"深淵の司祭王","hp":44,"mp":24,"atkExpr":"6d6+2","defExpr":"5d6+4","weakness":"physical","turnLimit":15 },
+
+    { "id":"B6_ABYSS_ARMORED_WARLORD","depth":6,"name":"深淵鎧将","hp":62,"mp":10,"atkExpr":"7d6+2","defExpr":"6d6+4","weakness":"magic","turnLimit":15 },
+    { "id":"B7_CURSE_ORACLE_KING","depth":7,"name":"呪詛の預言王","hp":68,"mp":36,"atkExpr":"7d6+4","defExpr":"6d6+3","weakness":"physical","turnLimit":15 },
+    { "id":"B8_LAVA_TITAN_CORE","depth":8,"name":"溶核タイタン","hp":90,"mp":12,"atkExpr":"8d6+4","defExpr":"8d6+2","weakness":"magic","turnLimit":15 },
+    { "id":"B9_VOID_LICH_KING","depth":9,"name":"虚無のリッチ王","hp":88,"mp":54,"atkExpr":"9d6+4","defExpr":"8d6+4","weakness":"physical","turnLimit":15 },
+    { "id":"B10_ABYSS_DRAGON_EMPEROR","depth":10,"name":"深淵竜帝","hp":120,"mp":60,"atkExpr":"10d6+6","defExpr":"10d6+4","weakness":"magic","turnLimit":15 }
   ]
 }

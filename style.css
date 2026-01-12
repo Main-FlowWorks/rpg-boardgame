@@ -355,3 +355,63 @@ select,input{
   border-radius: 8px;
   line-height: 1;
 }
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.55);
+  z-index: 9999;
+}
+.modal.hidden { display: none; }
+:root{
+  --tileSize: 74px; /* JSがここを読む */
+}
+
+/* モーダル */
+.modal{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 999;
+}
+
+.hidden{ display:none; }
+
+.modalContent{
+  width: min(560px, 100%);
+}
+
+/* range 行 */
+.rangeRow{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+.rangeRow input[type="range"]{
+  flex: 1;
+}
+
+/* ボードが --tileSize を使ってない場合はこれも追加 */
+#board{
+  display: grid;
+  grid-template-columns: repeat(7, var(--tileSize));
+  gap: 8px;
+}
+.tile{
+  width: var(--tileSize);
+  height: var(--tileSize);
+}
+.modeBtns{
+  display:flex;
+  gap:8px;
+}
+.modeBtns .btn{
+  flex:1;
+}

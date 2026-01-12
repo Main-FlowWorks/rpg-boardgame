@@ -38,6 +38,9 @@ let BOSS_POS = -1;     // ★追加：ボスマス位置（起動時に確定）
 
 let RESULT_DELAY_MS = 650; // 自分の行動→敵の行動の間の待ち（見やすさ）
 
+let GAME_MODE = "normal"; // "normal" | "solo"
+let LAST_CONFIG = null;   // リトライ用（直近の開始設定）
+
 let DATA = null;
 let state = null;
 
@@ -120,6 +123,85 @@ function escapeHtml(s) {
 function jobName(jobId) { return DATA.jobs[jobId]?.name ?? jobId; }
 function tileTypeAt(pos) { return DATA.board.tiles[pos]; }
 function tileTypeJa(type) { return TYPE_JA[type] ?? type; }
+
+function setGameMode(mode) {
+  GAME_MODE = (mode === "solo") ? "solo" : "normal";
+
+  const normalOnly = $("normalOnly");
+  const soloNote = $("soloNote");
+  const normalNote = $("normalNote");
+
+  const btnN = $("btnModeNormal");
+  const btnS = $("btnModeSolo");
+
+  if (btnN) btnN.classList.toggle("primary", GAME_MODE === "normal");
+  if (btnS) btnS.classList.toggle("primary", GAME_MODE === "solo");
+
+  if (normalOnly) normalOnly.classList.toggle("hidden", GAME_MODE === "solo");
+  if (normalNote) normalNote.classList.toggle("hidden", GAME_MODE === "solo");
+  if (soloNote) soloNote.classList.toggle("hidden", GAME_MODE !== "solo");
+
+  // ソロにしたら人数は1に固定（UI側も合わせる）
+  const pc = $("playersCount");
+  if (GAME_MODE === "solo" && pc) pc.value = "1";
+
+  buildJobSelectors();
+}
+
+function openGameOverModal(text) {
+  const m = $("gameOverModal");
+  const s = $("gameOverSummary");
+  if (s) s.textContent = text;      // 改行をそのまま出せる
+  if (m) m.classList.remove("hidden");
+}
+
+function closeGameOverModal() {
+  const m = $("gameOverModal");
+  if (m) m.classList.add("hidden");
+}
+
+function endSoloGame(reasonText = "GAME OVER") {
+  if (!state) return;
+
+  // 操作停止
+  state.isGameOver = true;
+  state.battle = null;
+  state.awaitingContinue = null;
+  state.awaitingChoice = null;
+  state.pendingSkillChoice = null;
+
+  const p = state.players[0];
+  const turns = Math.max(1, Number(state.stats?.turnsStarted ?? 1));
+  const score = Number(p.bankGold ?? 0);
+  const avg = score / turns;
+
+  const summary =
+`${reasonText}
+確定ゴールド：${score}G
+ターン数：${turns}
+ターン平均：${avg.toFixed(2)}G/turn`;
+
+  logLine("=== GAME OVER ===");
+  logLine(summary.replaceAll("\n", " / "));
+  setActionInfo(summary);
+
+  openGameOverModal(summary);
+  renderAll();
+}
+
+function readConfigFromSetup() {
+  const mode = GAME_MODE;
+  const playersCount = (mode === "solo") ? 1 : Number($("playersCount").value);
+  const roundsTotal = (mode === "solo") ? 999999 : Number($("roundsTotal").value);
+  const timerEnabled = (mode === "solo") ? false : ($("timerEnabled").value === "true");
+
+  const jobs = [];
+  for (let i = 0; i < playersCount; i++) {
+    jobs.push($(`jobSel_${i}`).value);
+  }
+  return { mode, playersCount, roundsTotal, timerEnabled, jobs };
+}
+
 
 // ---------- UI messages ----------
 function setActionInfo(text) {
@@ -606,7 +688,8 @@ function buildJobSelectors() {
   const root = $("jobSelectors");
   root.innerHTML = "";
 
-  const count = Number($("playersCount").value);
+  const count = (GAME_MODE === "solo") ? 1 : Number($("playersCount").value);
+
   const jobIds = Object.keys(DATA.jobs);
 
   for (let i = 0; i < count; i++) {
@@ -695,18 +778,27 @@ function initPlayer(pid, jobId) {
 }
 
 function startGame() {
-  const playersCount = Number($("playersCount").value);
-  const roundsTotal = Number($("roundsTotal").value);
-  const timerEnabled = $("timerEnabled").value === "true";
+  const cfg = readConfigFromSetup();
+  LAST_CONFIG = cfg;
+  startGameFromConfig(cfg);
+}
+
+function startGameFromConfig(cfg) {
+  closeGameOverModal();
+
+  const playersCount = cfg.playersCount;
+  const roundsTotal = cfg.roundsTotal;
+  const timerEnabled = cfg.timerEnabled;
 
   const players = [];
   for (let i = 0; i < playersCount; i++) {
-    const jobId = $(`jobSel_${i}`).value;
+    const jobId = cfg.jobs[i];
     players.push(initPlayer(`P${i+1}`, jobId));
   }
 
   state = {
-    settings: { playersCount, roundsTotal, timerEnabled },
+    settings: { playersCount, roundsTotal, timerEnabled, mode: cfg.mode },
+    stats: { turnsStarted: 0 }, // ★追加：ターン数カウント
     turn: { round: 1, playerIndex: 0 },
     decks: {
       treasure: buildTreasureDeck(),
@@ -718,33 +810,30 @@ function startGame() {
     log: [],
     ui: { actionInfo: "", battleInfo: "", drag: null },
 
-    // 手番を止める仕組み
-    awaitingContinue: null, // { label, enabled, token, cb }
+    awaitingContinue: null,
+    awaitingChoice: null,
 
-    // ★追加：選択ボタン待ち（confirm/prompt置換用）
-    awaitingChoice: null,   // { message, options:[{label, className, tip, disabled, onClick}] }
-
-    afterGrowth: null, // 例："endTurn" / "bossReturn"
-
-    pendingSkillChoice: null,  // { playerIndex, newSkillId }
-    levelUpSkillFlow: null,    // { playerIndex, remaining, doneCb }
-      
+    afterGrowth: null,
+    pendingSkillChoice: null,
+    levelUpSkillFlow: null,
+    isGameOver: false,
   };
 
   state.players = players;
 
   // 初期スキル：自職から
-for (const p of state.players) {
-  const need = Number(DATA.jobs[p.job].startSkillCount ?? 0);
-  for (let k = 0; k < need; k++) {
-    const sid = drawSkillFromJob(p.job); // ★初期は自職限定
-    if (!sid) break;
-    if (p.skillsEquipped.length < 3) {
-      p.skillsEquipped.push(sid);
-      p.skillCT[sid] = 0;
+  for (const p of state.players) {
+    const need = Number(DATA.jobs[p.job].startSkillCount ?? 0);
+    for (let k = 0; k < need; k++) {
+      const sid = drawSkillFromJob(p.job);
+      if (!sid) break;
+      if (p.skillsEquipped.length < 3) {
+        p.skillsEquipped.push(sid);
+        p.skillCT[sid] = 0;
+      }
     }
   }
-}
+
   // 初期：財宝/アイテム/装備
   for (const p of state.players) {
     const base = drawTreasureBase();
@@ -770,6 +859,8 @@ for (const p of state.players) {
   beginPlayerTurn();
   renderAll();
 }
+
+
 function showChoice(message, options) {
   // message は actionInfo に出す（3.A）
   if (message) setActionInfo(message);
@@ -805,6 +896,7 @@ function currentPlayer() { return state.players[state.turn.playerIndex]; }
 
 function beginPlayerTurn() {
   const p = currentPlayer();
+state.stats.turnsStarted = (state.stats.turnsStarted ?? 0) + 1;
 
   // MP+1
   p.mp = Math.min(p.mpMax, p.mp + 1);
@@ -835,8 +927,10 @@ function endTurn() {
   beginPlayerTurn();
 }
 
-function doGoHomeNow() {
-  state = null;
+
+  function doGoHomeNow() {
+  closeGameOverModal(); // ★追加
+ state = null;
   $("game").classList.add("hidden");
   $("setup").classList.remove("hidden");
   $("log").textContent = "";
@@ -847,11 +941,9 @@ function doGoHomeNow() {
   buildJobSelectors();
 }
 
+
 function goHome() {
   if (!state) return;
-
-  // 何か待ちの最中ならまず止める（好みで）
-  if (state.awaitingContinue) return;
 
   showChoice("ホームに戻ります。\n今のゲームは終了します。よろしいですか？", [
     {
@@ -2610,8 +2702,21 @@ function offerReturnAfterBoss() {
 }
 
 function onPlayerDeath() {
-  const p = currentPlayer();
 
+   const p = currentPlayer();
+
+  // ★ソロは死亡で終了
+  const mode = state?.settings?.mode ?? GAME_MODE;
+  if (mode === "solo") {
+    const bagSum = p.bagTreasure.reduce((a,b)=>a+b, 0);
+
+    // バッグはロスト（表示用にも明示）
+    p.bagTreasure = [];
+
+    logLine(`${p.id} は死亡…（ソロ：ゲーム終了 / バッグ${bagSum}Gロスト）`);
+    endSoloGame(`死亡（バッグ${bagSum}Gロスト）`);
+    return;
+  }
   logLine(`${p.id} は死亡…（バッグ財宝は全ロスト）`);
   setActionInfo(`${p.id} は死亡…\nバッグ財宝は全ロスト。\nSTARTへ戻ります。`);
 
@@ -2991,8 +3096,17 @@ function renderStatusLine() {
   if (!el) return;
 
   if (!state) { el.textContent = ""; return; }
+
+  const mode = state.settings?.mode ?? "normal";
+  if (mode === "solo") {
+    const t = Number(state.stats?.turnsStarted ?? 0);
+    el.textContent = `Turn ${t} / 手番: ${currentPlayer().id}`;
+    return;
+  }
+
   el.textContent = `Round ${state.turn.round}/${state.settings.roundsTotal} / 手番: ${currentPlayer().id}`;
 }
+
 
 // 7x7 の外側から内側へ渦巻き（時計回り）に並べる
 function buildSpiralCoords(N) {
@@ -3256,6 +3370,10 @@ function renderPlayerInfo() {
 function renderActions() {
   const btnRoot = $("actionButtons");
   btnRoot.innerHTML = "";
+    if (state.isGameOver) {
+    return;
+  }
+
   // ★選択ボタン待ち（confirm/prompt代替）を最優先で表示
   if (state.awaitingChoice) {
     const { options } = state.awaitingChoice;
@@ -3549,6 +3667,27 @@ if (modal) {
   else console.warn("btnStart が見つかりません");
 
   buildJobSelectors();
+    // --- モードボタン ---
+  const btnModeNormal = $("btnModeNormal");
+  const btnModeSolo = $("btnModeSolo");
+  if (btnModeNormal) btnModeNormal.onclick = () => setGameMode("normal");
+  if (btnModeSolo) btnModeSolo.onclick = () => setGameMode("solo");
+
+  // 初期モード
+  setGameMode("normal");
+
+  // --- GAME OVER モーダル ---
+  const btnRetry = $("btnRetry");
+  const btnGoHome = $("btnGoHome");
+  if (btnRetry) btnRetry.onclick = () => {
+    if (!LAST_CONFIG) return;
+    startGameFromConfig(LAST_CONFIG);
+  };
+  if (btnGoHome) btnGoHome.onclick = () => {
+    closeGameOverModal();
+    doGoHomeNow();
+  };
+
   // --- 追加ここまで ---
 
 }
